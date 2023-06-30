@@ -1,0 +1,11 @@
+
+<ng-container *ngFor="let element of selectedElement" >
+    <app-custom-input-text class="m-5"  *ngIf="element.value == 'input-text'"
+    [backgroundColor]="element?.backgroundColor"
+    [borderRadius]="element?.borderRadius" ></app-custom-input-text>
+    <app-custom-button class="m-5" *ngIf="element?.value == 'button'"
+    [backgroundColor]="element?.backgroundColor"
+     [buttonText]="element?.text "
+     [borderRadius]="element?.borderRadius "></app-custom-button>
+
+</ng-container>

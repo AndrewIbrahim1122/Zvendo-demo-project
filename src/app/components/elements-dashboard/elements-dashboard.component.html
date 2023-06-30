@@ -1,0 +1,40 @@
+<!-- <div cdkDrag>Hello, drag me!</div> -->
+
+<h3 class="text-center">Choose your item</h3>
+
+<div class="d-flex flex-column mt-5 text-center">
+    <ng-container *ngFor="let element of elements; let i = index">
+        <h4 (click)="elementSelected(element)">{{element.name}}</h4>
+        <!-- <app-custom-button cdkDrag (click)="elementSelected(element)"></app-custom-button> -->
+        <ng-container *ngIf="element.setting == true">
+            <form (ngSubmit)="saveElements(element)">
+                <div class="row my-2">
+                    <div class="col-6">
+                        <label for="backgroundColor">Background color</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" (keyup)="setStyling(element)" [(ngModel)]="element.backgroundColor" placeholder="Background color" name="background color">
+                    </div>
+                </div>
+                <div class="row my-2" *ngIf="element.value!= 'input-text'" >
+                    <div class="col-6">
+                        <label for="backgroundColor">Text</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" (keyup)="setStyling(element)" [(ngModel)]="element.text" placeholder="Text" name="text">
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-6">
+                        <label for="backgroundColor">Border radius</label>
+                    </div>
+                    <div class="col-6">
+                        <input type="number" (keyup)="setStyling(element)" [(ngModel)]="element.borderRadius" placeholder="Border radius" name="Border radius">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-5" >Add</button>
+            </form>
+        </ng-container>
+        <hr *ngIf="i==0">
+    </ng-container>
+</div>
